@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MountainController : MonoBehaviour
 {
-    float speed=2;
+    float M_Speed=2;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * speed); 
+        transform.Translate(Vector2.left * Time.deltaTime * M_Speed);
     }
 }

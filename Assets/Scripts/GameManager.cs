@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerAnimation;
     public GameObject GroundPrefab;
     public GameObject TapImg;
+    public GameObject UpperBorderLine;
     GameObject OGO;
     GameObject GGO;
 
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject gm= Instantiate(UpperBorderLine, new Vector3(-0.1721f, 5.2201f, 0), Quaternion.identity);
         PlayerAnimation.GetComponent<Animator>().enabled = false;       //This statement to turn off the player Animatio before start the game...
 
         if (!GameIsStarted && Input.GetMouseButtonDown(0))      //In this condition if game is not started condition is "FALSE" and you clicke on mouse button then>>>
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
                 //Game Over!!!
                 Highscore = ScoreTimer;
                 SaveHighScore();        //In GameManager line 115<<<
+                Destroy(gm);
             }
 
         }

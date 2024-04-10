@@ -37,6 +37,7 @@ public class MainMenuScripts : MonoBehaviour
     {
         if (timer <= 0)
         {
+            
             MGO = Instantiate(Mountains, new Vector3(12f, -5f, 0), Quaternion.identity);
             timer = 5;
         }
