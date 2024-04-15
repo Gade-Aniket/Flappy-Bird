@@ -10,5 +10,6 @@ public class MountainController : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime * M_Speed);
+        Debug.Log("Working...");
     }
 }

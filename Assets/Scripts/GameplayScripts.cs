@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameplayScripts : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class GameplayScripts : MonoBehaviour
     public TextMeshProUGUI ScoreTimeUpdate;
     public TextMeshProUGUI GOScoreTimeUpdate;
     public TextMeshProUGUI HighScoreUpdate;
+    public AudioSource GameAudio;
+
+    public bool IsPausePanelOn = false;
 
     // Awake is called refer to data in other scripts
     private void Awake()
@@ -26,16 +30,19 @@ public class GameplayScripts : MonoBehaviour
         PausePanel.SetActive(true);
         GameOverPanel.SetActive(false);
         Time.timeScale = 0 ;
+        IsPausePanelOn = true;
     }
 
     public void ResumeBtnCLicked()      //In this function if you clicke on Resume button then>>>
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1;
+        IsPausePanelOn = false;
     }
 
     public void GameOver()      //In this function game is over>>>
     {
+        GameAudio.Stop();
         Time.timeScale = 0;
         GameOverPanel.SetActive(true);
         PauseBtn.interactable = false;
@@ -56,6 +63,11 @@ public class GameplayScripts : MonoBehaviour
         ScoreTimeUpdate.text = ("TIME: ") + GameManager.Instance.ScoreTimer.ToString("00000.00");
         GOScoreTimeUpdate.text = ("TIME: ") + GameManager.Instance.ScoreTimer.ToString("0.00");
         HighScoreUpdate.text = ("HIGHSCORE: ") + GameManager.Instance.HighScore.ToString("0.00");
+    }
+
+    public void GameBackgroundSound()
+    {
+        GameAudio.Play();
     }
 
 }
